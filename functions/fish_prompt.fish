@@ -16,8 +16,17 @@ function fish_prompt
 ## enable a new local theme
 	while true
 	set theme_to_enable $(random choice $(omf.packages.list --theme ))
-	omf.theme.set $theme_to_enable
-	end
+	
+
+		if test "random" != $theme_to_enable
+			if test "random_omf_theme" != $theme_to_enable
+			break
+			end
+		end
+        end
+        
+        omf.theme.set $theme_to_enable
+	
 	
 	
 	
