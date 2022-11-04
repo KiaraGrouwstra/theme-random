@@ -20,7 +20,7 @@ $ omf install random
 
 # License
 
-[MIT][mit] © [Tycho Grouwstra][author] et [al][contributors]
+[MIT][mit] © [Kiara Grouwstra][author] et [al][contributors]
 
 
 [mit]:            https://opensource.org/licenses/MIT
