@@ -13,7 +13,7 @@ function fish_prompt
 	end
 
 
-## enable a new local theme
+## pickup a new local theme
 	while true
 	set theme_to_enable $(random choice $(omf.packages.list --theme ))
 	
@@ -24,10 +24,9 @@ function fish_prompt
 			end
 		end
         end
-        
+
+        ## enable theme
         omf.theme.set $theme_to_enable
-	
-	
 	
 	
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
