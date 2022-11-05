@@ -35,7 +35,7 @@ function fish_prompt
 	
 	
 	##  command makes a new prompt line that fix prompt line disappearing after enabling new theme.
-	printf " \r "
+	printf " \n "
 	## When random theme is enabled, omf reload command will cause dead loop.
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
