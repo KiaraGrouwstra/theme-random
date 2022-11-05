@@ -24,11 +24,12 @@ function fish_prompt
         end
 
 
-        ## enable the theme
+        ## enable the new theme
 	## use low level functions for performance
-        ## omf.theme.set "$theme_to_enable"
+        omf.theme.set "$theme_to_enable"
 	## use high level functions for compatibility
-	omf theme "$theme_to_enable"
+	## omf theme function cause compatibility issues with this script. prompt line disappeared after enabling.
+	## omf theme "$theme_to_enable"
 	
 	
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
