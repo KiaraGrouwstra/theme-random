@@ -32,14 +32,14 @@ function fish_prompt
 	omf theme "$theme_to_enable"
 		
 
-	set target_theme "$theme_to_enable"
-	  # Load target theme's functions files
-  	for target_theme_function in {$OMF_CONFIG,$OMF_PATH}/themes*/$target_theme{,/functions}/*.fish
-    	source $target_theme_function
-  	end
-	## prompt line disappeared after enabling new theme.
+	## set target_theme "$theme_to_enable"
+	# Load target theme's functions files
+  	## for target_theme_function in {$OMF_CONFIG,$OMF_PATH}/themes*/$target_theme{,/functions}/*.fish
+    	## source $target_theme_function
+  	## end
+	## prompt line disappears after enabling new theme. That may be a bug of fish shell.
 	
-	
+
 	## When random theme is enabled, omf reload command will cause dead loop.
 	## omf.cli.reload
 	## prompt line appears without theme after enabling a new theme.
