@@ -16,7 +16,6 @@ function fish_prompt
 ## pickup a new local theme
 	while true
 	set theme_to_enable (random choice (omf.packages.list --theme))
-	
 		if test "random" != "$theme_to_enable"
 			if test "random_omf_theme" != "$theme_to_enable"
 			break
@@ -25,7 +24,10 @@ function fish_prompt
         end
 
         ## enable the theme
-        omf.theme.set "$theme_to_enable"
+	## use low level functions for performance
+        ## omf.theme.set "$theme_to_enable"
+	## use high level functions for compatibility
+	omf theme "$theme_to_enable"
 	
 	
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
@@ -33,7 +35,7 @@ function fish_prompt
 	
 	
 	##  command makes a new prompt line that fix prompt line disappearing after enabling new theme.
-	printf " \r "
+	printf " \n "
 	## When random theme is enabled, omf reload command will cause dead loop.
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
