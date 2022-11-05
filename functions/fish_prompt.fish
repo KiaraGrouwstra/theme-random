@@ -41,9 +41,11 @@ function fish_prompt
 
 	## When random theme is enabled, omf reload command will cause dead loop.
 	## omf.cli.reload
+	
+	
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
-	
+	printf " \r "
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
 	printf "random" > "$OMF_CONFIG"/theme
