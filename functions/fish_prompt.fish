@@ -32,7 +32,7 @@ function fish_prompt
 	printf "random" > "$OMF_CONFIG"/theme
 	
 	
-	##  command makes a new prompt line that fix prompt line disappeared after enabling new theme.
+	##  command makes a new prompt line that fix prompt line disappearing after enabling new theme.
 	printf " \r "
 	## When random theme is enabled, omf reload command will cause dead loop.
 	## prompt line appears without theme after enabling a new theme.
