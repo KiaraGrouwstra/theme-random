@@ -6,13 +6,6 @@
 
 
 function fish_prompt
-	## workaround for priority of fish_prompt.fish . It causes omf theme command failing. 
-	## omf theme this script file will not call rm command to fix the issue.
-	## if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
-	## mv -f (omf.xdg.config_home)/fish/functions/fish_prompt.fish (omf.xdg.config_home)/fish/functions/fish_prompt.fish.old
-	## end
-
-
 	## pickup a new local theme
 	while true
 	set theme_to_enable (random choice (omf.packages.list --theme))
@@ -31,6 +24,12 @@ function fish_prompt
 	omf theme "$theme_to_enable"
 		
 
+	## workaround for priority of fish_prompt.fish . It blocks random theme enabling. 
+	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
+	mv -f (omf.xdg.config_home)/fish/functions/fish_prompt.fish (omf.xdg.config_home)/fish/functions/fish_prompt.fish.old
+	end	
+
+
 	# Load target theme's functions files to try to fix prompt line disappearing. Failed.
 	## set target_theme "$theme_to_enable"
 	## for target_theme_function in {$OMF_CONFIG,$OMF_PATH}/themes*/$target_theme{,/functions}/*.fish
@@ -46,6 +45,7 @@ function fish_prompt
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
 	printf " \r "
+
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
 	printf "random" > "$OMF_CONFIG"/theme
