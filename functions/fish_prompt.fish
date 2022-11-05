@@ -1,12 +1,19 @@
 #!/usr/bin/env fish
 
 
-function fish_prompt
 ## themes in omf could not used by source command
 ## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
 
 
-## pickup a new local theme
+function fish_prompt
+	## workaround for priority of fish_prompt.fish . It causes omf theme command failing. 
+	## omf theme this script file will not call rm command to fix the issue.
+	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
+	mv -f (omf.xdg.config_home)/fish/functions/fish_prompt.fish (omf.xdg.config_home)/fish/functions/fish_prompt.fish.old
+	end
+
+
+	## pickup a new local theme
 	while true
 	set theme_to_enable (random choice (omf.packages.list --theme))
 		if test "random" != "$theme_to_enable"
@@ -15,6 +22,7 @@ function fish_prompt
 			end
 		end
         end
+
 
         ## enable the theme
 	## use low level functions for performance
@@ -33,13 +41,6 @@ function fish_prompt
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
 	## omf.cli.reload
-
-
-	## workaround for priority of fish_prompt.fish . It causes omf theme command failing. 
-	## omf theme this script file will not call rm command to fix the issue.
-	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
-	rm (omf.xdg.config_home)/fish/functions/fish_prompt.fish 
-	end
 
 	
 ## function fish_prompt end	
