@@ -28,13 +28,12 @@ function fish_prompt
 	## use low level functions for performance
         ## omf.theme.set "$theme_to_enable"
 	## use high level functions for compatibility
-	## omf theme function cause compatibility issues with this script. prompt line disappeared after enabling.
 	omf theme "$theme_to_enable"
 		
 
+	# Load target theme's functions files to try to fix prompt line disappearing. Failed.
 	## set target_theme "$theme_to_enable"
-	# Load target theme's functions files
-  	## for target_theme_function in {$OMF_CONFIG,$OMF_PATH}/themes*/$target_theme{,/functions}/*.fish
+	## for target_theme_function in {$OMF_CONFIG,$OMF_PATH}/themes*/$target_theme{,/functions}/*.fish
     	## source $target_theme_function
   	## end
 	## prompt line disappears after enabling new theme. That may be a bug of fish shell.
