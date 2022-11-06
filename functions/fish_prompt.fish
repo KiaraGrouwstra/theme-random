@@ -21,13 +21,18 @@ function fish_prompt
 			end
 		end
         end
+	
+	
+	## prompt line appears without theme after enabling a new theme.
+	## The new theme will be enabled after a command returns.
+	printf " \n $theme_to_enable theme is enabled. \r "
 
 
         ## enable the new theme
 	## use low level functions for performance
-        omf.theme.set "$theme_to_enable"
+        ## omf.theme.set "$theme_to_enable"
 	## use high level functions for compatibility
-	## omf theme "$theme_to_enable"
+	omf theme "$theme_to_enable"
 		
 
 	# Load target theme's functions files to try to fix prompt line disappearing. Failed.
@@ -42,11 +47,6 @@ function fish_prompt
 	## omf.cli.reload
 	
 	
-	## prompt line appears without theme after enabling a new theme.
-	## The new theme will be enabled after a command returns.
-	printf " \n $theme_to_enable theme is enabled \r "
-
-
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
 	printf "random" > "$OMF_CONFIG"/theme
 	
