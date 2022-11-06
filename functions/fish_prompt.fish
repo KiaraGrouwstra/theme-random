@@ -25,9 +25,9 @@ function fish_prompt
 
         ## enable the new theme
 	## use low level functions for performance
-        ## omf.theme.set "$theme_to_enable"
+        omf.theme.set "$theme_to_enable"
 	## use high level functions for compatibility
-	omf theme "$theme_to_enable"
+	## omf theme "$theme_to_enable"
 		
 
 	# Load target theme's functions files to try to fix prompt line disappearing. Failed.
