@@ -33,7 +33,7 @@ function fish_prompt
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
 	## printf " \n $theme_to_enable theme is enabled. \r "
-	echo (omf::em)" \n ✔ $theme_to_enable successfully enabled. \r "(omf::off) 
+	echo -e (omf::em)" \n ✔ $theme_to_enable successfully enabled. \r "(omf::off) 
 		
 
 	# Load target theme's functions files to try to fix prompt line disappearing. Failed.
