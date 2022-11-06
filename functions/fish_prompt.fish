@@ -25,7 +25,8 @@ function fish_prompt
 	
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
-	printf " \n $theme_to_enable theme is enabled. \r "
+	## printf " \n $theme_to_enable theme is enabled. \r "
+	echo (omf::em)"✔ $theme_to_enable successfully enabled."(omf::off)
 
 
         ## enable the new theme
