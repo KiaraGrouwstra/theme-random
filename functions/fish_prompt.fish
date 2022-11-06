@@ -52,6 +52,9 @@ function fish_prompt
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
 	printf "random" > "$OMF_CONFIG"/theme
 	
+	
+	pwd
+	
 
 ## function fish_prompt end	
 end
