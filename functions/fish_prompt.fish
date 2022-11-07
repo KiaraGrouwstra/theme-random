@@ -2,41 +2,41 @@
 
 
 function fish_prompt
-## themes in omf could not used by source command
-## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
-
-
-## workaround for priority of fish_prompt.fish . It cause omf theme command fail. 
-## omf theme this script file will not call rm command to fix the issue.
+	## workaround for priority of fish_prompt.fish . It blocks random theme enabling. 
 	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
-	rm (omf.xdg.config_home)/fish/functions/fish_prompt.fish 
-	end
-
-
-## pickup a theme_to_enable from omf official repo
-	while true
-	set theme_to_enable (random choice (omf.index.query --type=theme ))
-	if test "random" != $theme_to_enable
-		if test "random_omf_theme" != $theme_to_enable
-		break
-		end
-	end
+	mv -f (omf.xdg.config_home)/fish/functions/fish_prompt.fish (omf.xdg.config_home)/fish/functions/fish_prompt.fish.old
 	end	
 
 
-## enable new theme
-	omf.theme.set $theme_to_enable
+	## pickup a new local theme
+	while true
+	set theme_to_enable (random choice (omf.packages.list --theme))
+		if test "random" != "$theme_to_enable"
+			if test "random_omf_theme" != "$theme_to_enable"
+			break
+			end
+		end
+        end
+
+
+        ## enable the new theme
+	## use high level functions for compatibility
+	omf theme "$theme_to_enable"
+	
+
+	echo  (omf::em)"  ✔ $theme_to_enable successfully enabled.  "(omf::off) 	
 	
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
-	printf "random_omf_theme" > $OMF_CONFIG/theme
+	echo "random" > "$OMF_CONFIG"/theme
 	
 	
-	## pwd command makes a new prompt line that fix prompt line disappeared after enabling new theme.
+	## prompt line disappears after enabling new theme. That may be a bug of fish shell.
+	## The new theme will be enabled after a command returns.
+	## make a fake prompt line for end users.
 	pwd
-	## omf reload command will cause dead loop. It can now refresh prompt line.
-	##omf.cli.reload
+	echo '>'
 
-	
+
 ## function fish_prompt end	
 end
