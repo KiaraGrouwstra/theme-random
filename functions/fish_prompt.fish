@@ -24,18 +24,15 @@ function fish_prompt
 	omf theme "$theme_to_enable"
 	
 
-	echo  (omf::em)"  ✔ $theme_to_enable successfully enabled.  "(omf::off) 	
+	echo  (omf::em)"  ✔ $theme_to_enable successfully enabled.  "(omf::off)
 	
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
 	echo "random" > "$OMF_CONFIG"/theme
-	
-	
-	## prompt line disappears after enabling new theme. That may be a bug of fish shell.
-	## The new theme will be enabled after a command returns.
-	## make a fake prompt line for end users.
-	pwd
-	echo '>'
+
+	## no need for a fake prompt
+	## ask fish shell to press '\n' / return for you, making the prompt appear automatically
+	commandline -f execute
 
 
 ## function fish_prompt end	
